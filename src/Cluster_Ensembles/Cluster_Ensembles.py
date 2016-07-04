@@ -150,10 +150,10 @@ def get_compression_filter(byte_counts):
     
     if 2 * byte_counts > 1000 * memory()['free']:
         try:
-            FILTERS = tables.filters(complevel = 5, complib = 'blosc', 
+            FILTERS = tables.Filters(complevel = 5, complib = 'blosc', 
                                      shuffle = True, least_significant_digit = 6)
         except tables.FiltersWarning:
-            FILTERS = tables.filters(complevel = 5, complib = 'lzo', 
+            FILTERS = tables.Filters(complevel = 5, complib = 'lzo', 
                                      shuffle = True, least_significant_digit = 6)   
     else:
         FILTERS = None
